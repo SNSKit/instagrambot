@@ -1,0 +1,25 @@
+<style type="text/css">
+	body {
+		background: #f2f2f2; 
+	}
+</style>
+<div class="container"> 
+	<div class="hashtag-header">
+		<h2>#<%= @hashtag.content %></h2>
+	</div>
+	<% Instagram.tag_recent_media(@hashtag.content).data.each do |data| %>
+		<div class="photo">
+			<div class="top">
+				<div class="avatar">
+					<%= image_tag data.user.profile_picture %>
+				</div>
+				<div class="username">
+					<a href="http://instagram.com/<%= data.user.username %>" target="_blank"><%= data.user.username %></a>
+				</div>
+			</div>
+			<div class="image">
+				<%= image_tag data.images.standard_resolution.url %>
+			</div>
+		</div>
+	<% end %>
+</div>

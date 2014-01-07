@@ -1,0 +1,95 @@
+<style type="text/css">
+	body {
+		background: #f2f2f2; 
+	}
+	.cover {
+		background: url(<%= @recent_image %>);
+		background-size: cover;
+		background-position: center;
+	}
+</style>
+<div class="container">
+	<div class="dashboard">
+		<div class="branding">
+			<div class="logo">
+				<h2>InstagramBot</h2>
+			</div>
+			<div class="logout-link">
+				<%= link_to("<i class='icon-cross_mark'></i> Logout".html_safe, destroy_user_session_path, :method => :delete, :class => "logout") %>
+			</div>
+		</div>
+		<div class="upper">
+			<div class="cover">
+				<div class="overlay">
+					<div class="user">
+						<%= image_tag current_user.picture %> 
+					</div>
+					<div class="name">
+						<a href="http://instagram.com/<%= current_user.username %>" target="_blank"><%= current_user.username %></a>
+					</div>
+				</div>
+			</div>
+			<div class="lower">
+				<div class="section">
+					<h2><%= @follows.counts.media %></h2>
+					<p>posts</p>
+				</div>
+				<div class="section">
+					<h2><%= @follows.counts.followed_by %></h2>
+					<p>followers</p>
+				</div>
+				<div class="section">
+					<h2><%= @follows.counts.follows %></h2>
+					<p>following</p>
+				</div>
+			</div>
+		</div>
+		<div class="add-hashtag">
+			<%= form_for("hashtag", :url => new_hashtag_path) do |f| %>
+				<%= f.text_field :content, :class => "form-control", :placeholder => "add hashtag..." %>
+				<%= f.submit "Add Hashtag", :class => "btn btn-default" %>
+			<% end %>
+		</div>
+		<% if @hashtags.any? %>
+			<div class="hashtags">
+				<div class="header">
+					<h2>Hashtags</h2>
+				</div>
+				<div class="tags">
+					<% @hashtags.each do |hashtag| %>
+						<div class="tag">
+							<div class="delete">
+								<%= link_to "Delete Hashtag", hashtag, method: :delete,
+	                                     data: { confirm: "You sure?" },
+	                                     title: hashtag.content %>
+	                        </div>
+							<div class="tag-copy">
+								<p>#<%= link_to hashtag.content, hashtag %></p>
+							</div>
+							
+	                    </div>
+	                    <div class="clearfix"></div>
+					<% end %>
+				</div>
+			</div>
+		<% end %>
+		<div class="options">
+			<div class="header">
+				<h2>Options</h2>
+			</div>
+			<div class="option">
+				<div class="left">
+					<h2>Auto Follow</h2>
+					<p>Auto follow users from the hashtags above and like 4 of their photos.</p>
+				</div>
+				<div class="right">
+					<% if current_user.enable_following == true %>
+						
+					<% else %>
+						
+					<% end %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
