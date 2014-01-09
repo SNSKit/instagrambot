@@ -1,5 +1,4 @@
 == README
 
 this is a quick weekend project I built to test some ideas out on how to growth hack getting followers on Instagram. this code isn't the best, just threw something together to make something work and see the results. 
-<tt>rake doc:app</tt>.
  
