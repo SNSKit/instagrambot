@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
 
   has_many :hashtags
 
+  has_many :follows
+
   def self.from_omniauth(auth)
     where(auth.slice(:provider, :uid)).first_or_create do |user| 
       user.provider = auth.provider
@@ -29,19 +31,26 @@ class User < ActiveRecord::Base
     end
   end
 
-  def self.follow_users(access_token, tags, user_id)
+  def self.follow_users(token, tags, user_id)
     tags.each do |hashtag|
-      Instagram.tag_recent_media(hashtag.content, :access_token => access_token).data.each do |data|
-        Instagram.follow_user(data.user.id, :access_token => access_token).each do 
+      Instagram.tag_recent_media(hashtag.content).data.each do |data|
+        Instagram.follow_user(data.user.id, :access_token => token).each do 
           Follow.create!(
             user_id: user_id,
             followed_id: data.user.id.to_s
           )
           Instagram.user_recent_media(data.user.id, :count => "4").each do |image|
-            Instagram.like_media(image.id, :access_token => access_token)
+            Instagram.like_media(image.id, :access_token => token)
           end
         end
       end
+    end
+  end
+
+  def self.unfollow_users(access_token, user_id)
+    follows = User.find(user_id).follows.where('created_at > ?', 3.days.ago)
+    follows.each do |follow|
+     Instagram.unfollow_user(follow.followed_id, :access_token => access_token)
     end
   end
   

@@ -8,9 +8,10 @@ class PagesController < ApplicationController
 
       if current_user.enable_following? 
         User.follow_users(current_user.access_token, current_user.hashtags, current_user.id)
+        User.unfollow_users(current_user.access_token, current_user.id)
       end
   	end 
-  end
+  end 
 
   def about
   end
@@ -21,7 +22,7 @@ class PagesController < ApplicationController
   end
 
   def disable_following
-
+ 
   end
 
   private
