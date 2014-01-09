@@ -1,4 +1,4 @@
 == README
 
-this is a quick weekend project I built to test some ideas out on how to growth hack getting followers on Instagram. this code isn't the best, just threw something together to make something work and see the results. 
+this is a quick weekend project I built to test some ideas out on how to growth hack getting followers on Instagram. this code isn't the best, just threw something together to make something work and see the results. you enter hashtags, the app follows users on these hashtags and likes 4 of their most recent photos. after 24 hours, it unfollows the user. shout out to these guys for the inspiration: http://www.mobileinc.co.uk/2013/12/follow-pie-the-instagram-bot-made-to-generate-more-app-store-downloads/
  
