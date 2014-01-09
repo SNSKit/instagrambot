@@ -11,7 +11,7 @@ class PagesController < ApplicationController
       scheduler = Rufus::Scheduler.new
 
       if current_user.enable_following? 
-        scheduler.every '5m' do
+        scheduler.every '1m' do
           User.follow_users(current_user.access_token, current_user.hashtags, current_user.id)
         end
 
