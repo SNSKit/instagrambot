@@ -7,8 +7,13 @@ class PagesController < ApplicationController
       @hashtags = current_user.hashtags
 
       if current_user.enable_following? 
-        User.follow_users(current_user.access_token, current_user.hashtags, current_user.id)
-        User.unfollow_users(current_user.access_token, current_user.id)
+        scheduler.every '2h' do
+          User.follow_users(current_user.access_token, current_user.hashtags, current_user.id)
+        end
+
+        scheduler.every '24h' do
+          User.unfollow_users(current_user.access_token, current_user.id)
+        end
       end
   	end 
   end 

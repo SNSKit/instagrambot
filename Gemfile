@@ -24,6 +24,7 @@ gem 'omniauth-instagram'
 gem 'instagram'
 gem 'protected_attributes'
 gem 'delayed_job_active_record'
+gem 'rufus-scheduler'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
