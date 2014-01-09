@@ -1,6 +1,6 @@
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
-Devise.setup do |config|
+Devise.setup do |config| 
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
@@ -22,8 +22,12 @@ Devise.setup do |config|
   require 'devise/orm/active_record'
 
   require "omniauth-instagram"
-  config.omniauth :instagram, "7f366b3f890645bfbab8991834e72a23", "db6ae8dad1044f09a114a36b9bafe94d", {:scope => 'likes comments relationships'}
 
+  if Rails.env.production?
+    config.omniauth :instagram, "dea6cf3abc084958b09572eee16d8cb8", "f655b7faf4124f899e16aad7de7b5cec", {:scope => 'likes comments relationships'}
+  else 
+    config.omniauth :instagram, "7f366b3f890645bfbab8991834e72a23", "db6ae8dad1044f09a114a36b9bafe94d", {:scope => 'likes comments relationships'}
+  end
   # ==> Configuration for any authentication mechanism
   # Configure which keys are used when authenticating a user. The default is
   # just :email. You can configure it to use [:username, :subdomain], so for
