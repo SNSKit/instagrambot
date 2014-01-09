@@ -6,8 +6,12 @@ class PagesController < ApplicationController
   		@client = Instagram.client(:access_token => current_user.access_token) 
       @hashtags = current_user.hashtags
 
+      require 'rufus-scheduler'
+
+      scheduler = Rufus::Scheduler.new
+
       if current_user.enable_following? 
-        scheduler.every '2h' do
+        scheduler.every '1h' do
           User.follow_users(current_user.access_token, current_user.hashtags, current_user.id)
         end
 
@@ -19,15 +23,6 @@ class PagesController < ApplicationController
   end 
 
   def about
-  end
-
-  def enable_following
-  	current_user.update_attribute(:enable_following, true)
-  	redirect_to root_path
-  end
-
-  def disable_following
- 
   end
 
   private

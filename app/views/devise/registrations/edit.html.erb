@@ -1,0 +1,43 @@
+<style type="text/css">
+  body {
+    background: #f2f2f2;  
+  }
+</style>
+<div class="container"> 
+  <div class="dashboard">
+    <div class="branding">
+      <div class="logo">
+        <h2><%= link_to "InstagramBot", root_path %></h2>
+      </div>
+      <div class="logout-link">
+        <%= link_to "Disable Following", edit_user_registration_path %> | <%= link_to("<i class='icon-cross_mark'></i> Logout".html_safe, destroy_user_session_path, :method => :delete, :class => "logout") %> 
+      </div>
+    </div>
+    <div class="disable">
+      <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+        <%= devise_error_messages! %>
+        <div class="header">
+          <h2>Auto Follow</h2>
+        </div>
+        <div class="toggle">
+          <div class="checkbox">
+            <label>
+              <%= f.check_box :enable_following %> Auto Following Enabled
+            </label>
+          </div>
+        </div>
+        <div class="lower">
+          <%= f.submit "Update", :class => "btn btn-default" %>
+        </div>
+      <% end %>
+    </div>
+    <div class="remove_account">
+      <div class="header">
+        <h2>Delete Account</h2>
+      </div>
+      <div class="delete">
+        <%= button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => "btn btn-default" %>
+      </div>
+    </div>
+  </div>
+</div>

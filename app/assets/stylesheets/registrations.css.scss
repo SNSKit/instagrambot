@@ -1,0 +1,103 @@
+.disable {
+	width: 100%;
+
+	min-height: 75px;
+
+	background: white;
+
+	border-radius: 4px;
+
+	-webkit-border-radius: 4px;
+
+	-webkit-box-shadow: 0 0 1px rgba(0,0,0,0.1), 0 1px 5px rgba(0,0,0,0.15);
+		
+	-moz-box-shadow: 0 0 1px rgba(0,0,0,0.1), 0 1px 5px rgba(0,0,0,0.15);
+		
+	box-shadow: 0 0 1px rgba(0,0,0,0.1), 0 1px 5px rgba(0,0,0,0.15);
+
+	.header {
+		width: 100%;
+
+		height: 50px;
+
+		border-bottom: 1px solid #d4d4d4;
+
+		h2 {
+			margin: 0;
+			
+			font-size: 15px;
+			
+			color: #585c5f;
+			
+			-webkit-font-smoothing: antialiased;
+			
+			font-smoothing: antialiased;
+			
+			padding: 17px;
+		}
+	}
+
+	.toggle {
+		width: 100%;
+
+		padding: 17px;
+	}
+
+	.lower {
+		width: 100%;
+
+		height: 70px;
+
+		border-top: 1px solid #d4d4d4;
+
+		.btn {
+			margin: 10px;
+		}
+	}
+}
+
+.remove_account {
+	width: 100%;
+
+	min-height: 50px;
+
+	background: white;
+
+	border-radius: 4px;
+
+	-webkit-border-radius: 4px;
+
+	-webkit-box-shadow: 0 0 1px rgba(0,0,0,0.1), 0 1px 5px rgba(0,0,0,0.15);
+		
+	-moz-box-shadow: 0 0 1px rgba(0,0,0,0.1), 0 1px 5px rgba(0,0,0,0.15);
+		
+	box-shadow: 0 0 1px rgba(0,0,0,0.1), 0 1px 5px rgba(0,0,0,0.15);
+
+	margin-top: 15px;
+
+	.header {
+		width: 100%;
+
+		height: 50px;
+
+		border-bottom: 1px solid #d4d4d4;
+
+		h2 {
+			margin: 0;
+			
+			font-size: 15px;
+			
+			color: #585c5f;
+			
+			-webkit-font-smoothing: antialiased;
+			
+			font-smoothing: antialiased;
+			
+			padding: 17px;
+		}
+	}
+
+	.delete {
+		padding: 17px;
+	}
+}

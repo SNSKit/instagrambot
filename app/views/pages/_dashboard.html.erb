@@ -2,7 +2,7 @@
 	body {
 		background: #f2f2f2; 
 	}
-	.cover {
+	.cover { 
 		background: url(<%= @recent_image %>);
 		background-size: cover;
 		background-position: center;
@@ -12,10 +12,10 @@
 	<div class="dashboard">
 		<div class="branding">
 			<div class="logo">
-				<h2>InstagramBot</h2>
+				<h2><%= link_to "InstagramBot", root_path %></h2>
 			</div>
 			<div class="logout-link">
-				<%= link_to("<i class='icon-cross_mark'></i> Logout".html_safe, destroy_user_session_path, :method => :delete, :class => "logout") %>
+				<%= link_to "Disable Following", edit_user_registration_path %> | <%= link_to("<i class='icon-cross_mark'></i> Logout".html_safe, destroy_user_session_path, :method => :delete, :class => "logout") %> 
 			</div>
 		</div>
 		<div class="upper">
@@ -73,23 +73,5 @@
 				</div>
 			</div>
 		<% end %>
-		<div class="options">
-			<div class="header">
-				<h2>Options</h2>
-			</div>
-			<div class="option">
-				<div class="left">
-					<h2>Auto Follow</h2>
-					<p>Auto follow users from the hashtags above and like 4 of their photos.</p>
-				</div>
-				<div class="right">
-					<% if current_user.enable_following == true %>
-						
-					<% else %>
-						
-					<% end %>
-				</div>
-			</div>
-		</div>
 	</div>
 </div>
